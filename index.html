@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Crystal Game</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	 <!-- JQuery -->
+  	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="jumbotron">
+			<h1>CrystalsCollector!</h1>
+			<p>a Math and Memory Game</p>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+				At the start of the game, you will be given a <u>Random Number to Match</u>.<br>There are four crystals below, each representing a different value or points. By clicking on a crystal, you will add the specific amount of points to your accumulated score.<br>You win the game by matching your accumulated score to the random number, you lose if your total  goes above.<br>The value of each crystal is hidden from you until you click on it.<br>On start, the values of each crystal and the random number changes.
+			</div>		
+		</div>
+
+		<div class="row">		
+			<div class="col-xs-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Random Number to Match</h3>		
+					</div>
+					<div class="panel-body">
+						<h2><span id="numToMatch"></span></h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						Wins: <span id="winCounter">0</span>
+					</div>		
+				</div>
+			</div>
+
+			<div class="col-xs-3">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						Losses: <span id="lossCounter">0</span>
+					</div>		
+				</div>
+			</div>
+		</div>
+
+		<div class="row" id="crystals">
+		</div>
+		
+		<div class="row">		
+			<div class="col-xs-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Accumulated Score</h3>			
+					</div>
+					<div class="panel-body">
+						<h2><span id="totalScore">0</span></h2>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="assets/javascript/game.js"></script>
+
+</body>
+
+<!-- Footer -->
+<footer>
+<div id="footer">
+  <div class="container">
+    <p class="muted credit">Copyright &copy; 2017 Enrico Bernardo</p>
+  </div>
+</div>
+</footer>
+
+</html>

@@ -1,26 +1,48 @@
 // Global Variables
 // *****************************************
 var numToMatch = 0;
+var crystalScore = 0;
 var winCount = 0;
 var lossCount = 0;
 var accumScore = 0;
-var numOptions = [1, 3, 6, 9];
-var increment = numOptions[Math.round(Math.random())];
+var numOptions = [0, 0, 0, 0, 0, 0, 0, 0]; //establishes 4 crystals
 
 // Functions (reusable blocks of code)
 // *****************************************
 function startGame() {
-	//random # to match
+	//Generate random # for target match
 	numToMatch = Math.floor((Math.random() * 101) + 19);
-	console.log("random number to match: " + numToMatch);
 
 	// Reset variables
 	accumScore = 0;
+	numOptions = [];
 
 	// Change HTML with generated values
 	$("#numToMatch").text(numToMatch);
+	$("#totalScore").text(accumScore);
+
 }
 
+// Generate unique array of numbers between 1-12
+// http://stackoverflow.com/questions/962802#962890
+for (var a=[],i=0; i<12; i++) a[i] = i + 1;
+
+function shuffle(array) {
+  var tmp, current, top = array.length;
+  if(top) while(--top) {
+    current = Math.floor(Math.random() * (top + 1));
+    tmp = array[current];
+    array[current] = array[top];
+    array[top] = tmp;
+  }
+  return array.slice(0 , numOptions.length);
+}
+
+// Randomize Crystal Values
+numOptions = shuffle(a);
+console.log("Randomized Crystal Values are " + numOptions);
+
+// Sets image and score values of crystals
 for (var i = 0; i < numOptions.length; i++) {
 	var wrapper = $("<div>").addClass('col-xs-3');
 	$("<img>").addClass("crystal-image")
@@ -37,21 +59,21 @@ $(".crystal-image").on("click", function() {
 	crystalValue = parseInt(crystalValue);
 	accumScore += crystalValue;
 	// Change HTML with generated values
-	$("#totalScore").text(accumScore);
+	$("#totalScore").html(accumScore);
 
-	//Testing and Debugging, cicking any crystal triggers a console message
-	console.log("accumulated score: " + accumScore);
-
-	//Scoreboard
+	//Scoreboard and game reset
  	if (accumScore === numToMatch) {
-	alert("You win!");
 	winCount++;
 	$("#winCounter").text(winCount);
+	alert("You win! The numbers match");
+	startGame();
 	}
+
 	else if (accumScore > numToMatch) {
-	alert("You lost!");
 	lossCount++;
 	$("#lossCounter").text(lossCount);
+	alert("You lost! " + accumScore + " > " + numToMatch);
+	startGame();
 	}
 
 });

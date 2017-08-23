@@ -36,7 +36,7 @@ img {
 
 .jumbotron {
 	background-color: white;
-	/*padding-bottom: 48px;*/
+	padding: 20px;
 }
 
 /* Sticky footer styles

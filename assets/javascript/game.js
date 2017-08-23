@@ -1,11 +1,10 @@
 // Global Variables
 // *****************************************
 var numToMatch = 0;
-var crystalScore = 0;
 var winCount = 0;
 var lossCount = 0;
 var accumScore = 0;
-var numOptions = [0, 0, 0, 0, 0, 0, 0, 0]; //establishes 4 crystals
+var numOptions = [0, 0, 0, 0]; //each array position represents a crystal
 
 // Functions (reusable blocks of code)
 // *****************************************
@@ -20,7 +19,6 @@ function startGame() {
 	// Change HTML with generated values
 	$("#numToMatch").text(numToMatch);
 	$("#totalScore").text(accumScore);
-
 }
 
 // Generate unique array of numbers between 1-12
@@ -35,7 +33,7 @@ function shuffle(array) {
     array[current] = array[top];
     array[top] = tmp;
   }
-  return array.slice(0 , numOptions.length);
+  return array.slice(0, numOptions.length);
 }
 
 // Randomize Crystal Values
@@ -53,6 +51,7 @@ for (var i = 0; i < numOptions.length; i++) {
 	$("#crystals").append(wrapper);
 }
 
+//Behavior when user clicks a crystal
 $(".crystal-image").on("click", function() {
 	
 	var crystalValue = ($(this).attr("data-crystalvalue"));
@@ -75,7 +74,6 @@ $(".crystal-image").on("click", function() {
 	alert("You lost! " + accumScore + " > " + numToMatch);
 	startGame();
 	}
-
 });
 
 // Main Process

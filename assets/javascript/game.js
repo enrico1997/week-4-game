@@ -64,15 +64,23 @@ $(".crystal-image").on("click", function() {
  	if (accumScore === numToMatch) {
 	winCount++;
 	$("#winCounter").text(winCount);
-	alert("You win! The numbers match");
-	startGame();
+
+	setTimeout(function() {
+		alert("You win! The numbers match");
+		startGame();
+	}, 300);
+
 	}
 
-	else if (accumScore > numToMatch) {
-	lossCount++;
-	$("#lossCounter").text(lossCount);
-	alert("You lost! " + accumScore + " > " + numToMatch);
-	startGame();
+    else if (accumScore > numToMatch) {
+        console.log($('#totalScore').text());
+        lossCount++;
+        $("#lossCounter").text(lossCount);
+        
+        setTimeout(function () {
+        	alert("You lost! " + accumScore + " > " + numToMatch);
+            startGame();
+        }, 300);
 	}
 });
 

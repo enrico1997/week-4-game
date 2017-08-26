@@ -62,14 +62,13 @@ $(".crystal-image").on("click", function() {
 
 	//Scoreboard and game reset
  	if (accumScore === numToMatch) {
-	winCount++;
-	$("#winCounter").text(winCount);
+		winCount++;
+		$("#winCounter").text(winCount);
 
-	setTimeout(function() {
-		alert("You win! The numbers match");
-		startGame();
-	}, 300);
-
+		setTimeout(function() {
+			alert("You win! The numbers match");
+			startGame();
+		}, 30);
 	}
 
     else if (accumScore > numToMatch) {
@@ -80,7 +79,7 @@ $(".crystal-image").on("click", function() {
         setTimeout(function () {
         	alert("You lost! " + accumScore + " > " + numToMatch);
             startGame();
-        }, 300);
+        }, 30);
 	}
 });
 
